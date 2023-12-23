@@ -3,7 +3,7 @@ import pandas as pd
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StringType, StructType
 
-time_to_reset = 10 # Повторного просмотра папки на новые файлы
+time_to_reset = 60 # Повторного просмотра папки на новые файлы
 
 koef_anomaly_for_mes_freq = 10 #множитель определяющий аномалию частоты
 
@@ -58,7 +58,6 @@ while True:
             default_mes_freq = all_mes_count/all_time
             last_time = float(new_df.iloc[-1].tolist()[-1])
     time.sleep(time_to_reset)
-    print(new_df)
 
 query1.stop()
 
